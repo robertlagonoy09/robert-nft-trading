@@ -1,18 +1,26 @@
-const searchBox = document.querySelector(".search-box");
-const cards = document.querySelectorAll(".card");
+async function loadNFTs() {
+    const response = await fetch("js/nfts.json");
+    const nfts = await response.json();
 
-if (searchBox) {
-  searchBox.addEventListener("keyup", function () {
-    const keyword = this.value.toLowerCase();
+    const cardsContainer = document.querySelector(".cards");
 
-    cards.forEach(card => {
-      const title = card.querySelector("h3").textContent.toLowerCase();
+    if (!cardsContainer) return;
 
-      if (title.includes(keyword)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+    cardsContainer.innerHTML = "";
+
+    nfts.forEach(nft => {
+        cardsContainer.innerHTML += `
+        <div class="card">
+            <img src="${nft.image}" alt="${nft.name}">
+            <h3>${nft.name}</h3>
+            <p>${nft.price}</p>
+            <p><strong>Creator:</strong> ${nft.creator}</p>
+            <a href="nft.html?id=${nft.id}" class="btn">
+                View Details
+            </a>
+        </div>
+        `;
     });
-  });
 }
+
+loadNFTs();
