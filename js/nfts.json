@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Galaxy Phoenix",
+    "price": "10 Test Pi",
+    "image": "images/nft/nft1.jpg",
+    "creator": "Robert",
+    "description": "A legendary phoenix born from the stars."
+  },
+  {
+    "id": 2,
+    "name": "Golden Dragon",
+    "price": "15 Test Pi",
+    "image": "images/nft/nft2.jpg",
+    "creator": "Robert",
+    "description": "A powerful dragon with golden scales."
+  },
+  {
+    "id": 3,
+    "name": "Cyber Samurai",
+    "price": "20 Test Pi",
+    "image": "images/nft/nft3.jpg",
+    "creator": "Robert",
+    "description": "A futuristic warrior from Neo Tokyo."
+  },
+  {
+    "id": 4,
+    "name": "Pi King",
+    "price": "25 Test Pi",
+    "image": "images/nft/nft4.jpg",
+    "creator": "Robert",
+    "description": "The king of the Pi NFT universe."
+  }
+]
