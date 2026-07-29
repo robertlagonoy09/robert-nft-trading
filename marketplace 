@@ -46,8 +46,7 @@ class="search-box">
 <img src="images/nft/nft1.jpg" alt="">
 <h3>Galaxy Phoenix</h3>
 <p>Price: 10 Test Pi</p>
-<button>View Details</button>
-</div>
+<a href="nft.html" class="btn">View Details</a>
 
 <div class="card">
 <img src="images/nft/nft2.jpg" alt="">
