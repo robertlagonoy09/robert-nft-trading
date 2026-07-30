@@ -1,6 +1,8 @@
 # 🚀 Robert NFT Marketplace
 
-A modern NFT Marketplace built for the Pi Community.
+### Built for the Pi Ecosystem
+
+A secure NFT marketplace where creators and collectors can buy, sell, and trade digital collectibles using Pi.
 
 ## 🌟 Features
 
