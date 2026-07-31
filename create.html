@@ -1,36 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Create NFT - Robert NFT Marketplace</title>
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-</head>
-<body style="background:#0a0a0a; color:#fff; text-align:center; padding:40px;">
-  <h1>🚀 Create Your NFT</h1>
-
-  <input type="text" id="nftName" placeholder="NFT Name" style="padding:10px; width:300px;"><br><br>
-  <input type="number" id="nftPrice" placeholder="Price in Pi" style="padding:10px; width:300px;"><br><br>
-  <input type="file" id="nftImage"><br><br>
-
-  <button onclick="mintNFT()" style="padding:15px 40px; background:#ffc500; border:none; border-radius:8px;">Mint & List NFT</button>
-
-  <script>
-    Pi.init({ version: "2.0" });
-
-    async function mintNFT() {
-      Pi.authenticate(['username', 'payments']);
-
-      const name = document.getElementById('nftName').value;
-      const price = document.getElementById('nftPrice').value;
-      const file = document.getElementById('nftImage').files[0];
-
-      // 1. Upload image to IPFS muna - gamit Pinata API
-      alert("Uploading to IPFS...");
-
-      // 2. Save sa database mo: name, price, imageURL, owner
-
-      // 3. List sa homepage grid
-      alert("NFT Minted! Name: " + name + " Price: " + price + " Pi");
+document.getElementById('mint-btn').addEventListener('click', function() {
+    if(!currentUser){
+        alert("Please Login with Pi first!");
+        return;
     }
-  </script>
-</body>
-</html>
+    
+    const name = document.getElementById('nft-name').value;
+    const price = document.getElementById('nft-price').value;
+    
+    alert("NFT Created! \nName: " + name + "\nPrice: " + price + " Test Pi\nIPFS Upload disabled for Testnet review");
+    
+    // Dito mo ilalagay sa database mo later
+    console.log("Minted:", name, price, currentUser.username);
+});
