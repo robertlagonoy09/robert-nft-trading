@@ -1,101 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROBERT NFT MARKETPLACE - Buy & Sell NFTs with Pi</title>
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-    body { background: #0a0a0a; color: #fff; }
-    
-    /* NAVBAR */
-    nav { background: #111; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ffc500; }
-    nav h1 { color: #ffc500; font-size: 24px; }
-    nav button { background: #ffc500; color: #000; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    
-    /* HERO SECTION */
-    .hero { text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #ffc500 0%, #ff8c00 100%); color: #000; }
-    .hero h2 { font-size: 48px; margin-bottom: 20px; }
-    .hero p { font-size: 20px; margin-bottom: 30px; }
-    
-    /* NFT GRID */
-    .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
-    .container h3 { font-size: 32px; margin-bottom: 30px; text-align: center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .nft-card { background: #1a1a1a; border-radius: 15px; padding: 15px; border: 2px solid #333; transition: 0.3s; }
-    .nft-card:hover { border-color: #ffc500; transform: translateY(-5px); }
-    .nft-card img { width: 100%; border-radius: 10px; }
-    .nft-card h4 { margin: 10px 0; color: #ffc500; }
-    .nft-card button { width: 100%; padding: 12px; background: #ffc500; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    
-    /* FOOTER */
-    footer { text-align: center; padding: 30px; background: #111; margin-top: 50px; color: #888; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robert NFT Marketplace</title>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<style>
+body { margin:0; font-family:Arial; background: linear-gradient(orange, gold); text-align:center; color:black; }
+.header { background:#000; padding:15px; display:flex; justify-content:space-between; align-items:center; }
+.header h1 { color:gold; margin:0; }
+.login-btn { background:gold; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer; }
+.hero { padding:80px 20px; }
+.hero h1 { font-size:40px; }
+.hero button { padding:15px 30px; font-size:18px; border:none; border-radius:8px; cursor:pointer; }
+</style>
 </head>
 <body>
+<header class="header">
+<h1>🚀 ROBERT NFT MARKETPLACE</h1>
+<button class="login-btn" id="pi-login-btn">Connect Pi Wallet</button>
+</header>
 
-  <nav>
-    <h1>🚀 ROBERT NFT MARKETPLACE</h1>
-    <button onclick="login()">Connect Pi Wallet</button>
-  </nav>
+<section class="hero">
+<h1>The Home of Pi NFTs</h1>
+<p>Buy, Sell, and Mint Exclusive NFTs using Pi Coin</p>
+<button id="explore-btn">Start Exploring</button>
+</section>
 
-  <section class="hero">
-    <h2>The Home of Pi NFTs</h2>
-    <p>Buy, Sell, and Mint Exclusive NFTs using Pi Coin</p>
-    <button onclick="login()" style="padding:15px 40px; font-size:18px;">Start Exploring</button>
-  </section>
+<h2>🔥 Featured NFTs</h2>
 
-  <div class="container">
-    <h3>🔥 Featured NFTs</h3>
-    <div class="grid">
-      <div class="nft-card">
-        <img src="https://via.placeholder.com/300/ff8c00/000?text=NFT+001" alt="NFT 1">
-        <h4>Robert Genesis #001</h4>
-        <p>Price: <b>10 Pi</b></p>
-        <button onclick="buyNFT(10, '001')">Buy Now</button>
-      </div>
-      <div class="nft-card">
-        <img src="https://via.placeholder.com/300/ffc500/000?text=NFT+002" alt="NFT 2">
-        <h4>Robert Genesis #002</h4>
-        <p>Price: <b>15 Pi</b></p>
-        <button onclick="buyNFT(15, '002')">Buy Now</button>
-      </div>
-      <div class="nft-card">
-        <img src="https://via.placeholder.com/300/ff5500/000?text=NFT+003" alt="NFT 3">
-        <h4>Robert Genesis #003</h4>
-        <p>Price: <b>20 Pi</b></p>
-        <button onclick="buyNFT(20, '003')">Buy Now</button>
-      </div>
-    </div>
-  </div>
+<script>
+// 1. INIT PI
+Pi.init({ version: "2.0", sandbox: true });
 
-  <footer>
-    <p>© 2026 ROBERT NFT MARKETPLACE. Built for Pi Pioneers.</p>
-  </footer>
+let currentUser = null;
 
-  <script>
-    Pi.init({ version: "2.0" });
-
-    function login() {
-      Pi.authenticate(['username', 'payments']).then(function(auth) {
+// 2. LOGIN BUTTON
+document.getElementById('pi-login-btn').addEventListener('click', function() {
+    Pi.authenticate(['username', 'payments'], onIncompletePaymentFound)
+    .then(function(auth) {
+        currentUser = auth.user;
+        document.getElementById('pi-login-btn').innerText = "Hi " + auth.user.username;
         alert("Welcome " + auth.user.username + "!");
-      }).catch(function(error) { alert("Login Failed: " + error); });
-    }
+    }).catch(function(error) {
+        alert("Login failed");
+    });
+});
 
-    function buyNFT(amount, id) {
-      const payment = {
-        amount: amount,
-        memo: "Buy NFT #" + id + " from Robert NFT Marketplace",
-        metadata: { nft_id: id }
-      }
-      Pi.createPayment(payment, {
-        onReadyForServerApproval: function(paymentId){},
-        onReadyForServerCompletion: function(paymentId, txid){ alert("NFT #" + id + " Purchased!"); },
-        onCancel: function(paymentId){ alert("Cancelled"); },
-        onError: function(error){ alert("Error: " + error); }
-      });
-    }
-  </script>
+// 3. EXPLORE BUTTON -> PUPUNTA SA MARKETPLACE
+document.getElementById('explore-btn').addEventListener('click', function() {
+    window.location.href = "marketplace.html"; 
+});
+
+function onIncompletePaymentFound(payment) { console.log(payment); }
+</script>
 </body>
 </html>
