@@ -3,186 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Marketplace | Robert NFT Marketplace</title>
-
 <link rel="stylesheet" href="css/marketplace.css">
-
+<!-- STEP 1: LAGAY NATIN PI SDK DITO -->
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
-
 <body>
-
 <header class="header">
-
-<div class="logo">
-🟣 Robert NFT Marketplace
-</div>
-
+<div class="logo"> 🟣 Robert NFT Marketplace </div>
 <nav>
-
 <a href="index.html">Home</a>
-
-<a href="marketplace.html" class="active">
-Marketplace
-</a>
-
-<a href="create.html">
-Create
-</a>
-
-<a href="collections.html">
-Collections
-</a>
-
-<a href="profile.html">
-Profile
-</a>
-
-<button class="login-btn">
-Login with Pi
-</button>
-
+<a href="marketplace.html" class="active"> Marketplace </a>
+<a href="create.html"> Create </a>
+<a href="collections.html"> Collections </a>
+<a href="profile.html"> Profile </a>
+<!-- GINAWA KONG MAY ID PARA MA-CLICK -->
+<button class="login-btn" id="pi-login-btn"> Login with Pi </button>
+<span id="username" style="color:white; margin-left:10px;"></span>
 </nav>
-
 </header>
 
 <section class="hero">
-
-<h1>
-Discover, Collect & Trade NFTs
-</h1>
-
-<p>
-The first NFT Marketplace powered by Pi Network.
-</p>
-
-<input
-type="text"
-placeholder="Search NFTs..."
-class="search">
-
+<h1> Discover, Collect & Trade NFTs </h1>
+<p> The first NFT Marketplace powered by Pi Network. </p>
+<input type="text" placeholder="Search NFTs..." class="search">
 </section>
 
 <section class="categories">
-
-<button>All</button>
-
-<button>Art</button>
-
-<button>Wings</button>
-
-<button>Mounts</button>
-
-<button>Legendary</button>
-
-<button>New</button>
-
+<button>All</button> <button>Art</button> <button>Wings</button> 
+<button>Mounts</button> <button>Legendary</button> <button>New</button>
 </section>
 
 <section class="marketplace">
-
 <div class="card">
-
-<img src="images/nft/satoshi-devil-wing.png"
-alt="Satoshi Devil Wing">
-
+<img src="images/nft/satoshi-devil-wing.png" alt="Satoshi Devil Wing">
 <h3>Satoshi Devil Wings +30</h3>
-
 <p>Collection: Satoshi Wings</p>
-
-<p class="price">
-100 Test Pi
-</p>
-
-<a href="nft.html" class="details">
-View Details
-</a>
-
-<button class="buy">
-Buy with Pi
-</button>
-
+<p class="price"> 100 Test Pi </p>
+<a href="nft.html" class="details"> View Details </a>
+<!-- DINAGDAGAN KO NG DATA PARA SA PAYMENT -->
+<button class="buy" data-price="100" data-name="Satoshi Devil Wings +30" data-id="devil-wing-30"> Buy with Pi </button>
 </div>
+
 <div class="card">
-
-<img src="images/nft/satoshi-archangel.png"
-alt="Satoshi Archangel Wings">
-
+<img src="images/nft/satoshi-archangel.png" alt="Satoshi Archangel Wings">
 <h3>Satoshi Archangel Wings +30</h3>
-
 <p>Collection: Satoshi Wings</p>
-
-<p class="price">
-150 Test Pi
-</p>
-
-<a href="nft.html" class="details">
-View Details
-</a>
-
-<button class="buy">
-Buy with Pi
-</button>
-
+<p class="price"> 150 Test Pi </p>
+<a href="nft.html" class="details"> View Details </a>
+<button class="buy" data-price="150" data-name="Satoshi Archangel Wings +30" data-id="archangel-30"> Buy with Pi </button>
 </div>
 
 <div class="card">
-
-<img src="images/nft/satoshi-darkangel.png"
-alt="Satoshi Dark Angel Wings">
-
+<img src="images/nft/satoshi-darkangel.png" alt="Satoshi Dark Angel Wings">
 <h3>Satoshi Dark Angel Wings +30</h3>
-
 <p>Collection: Satoshi Wings</p>
-
-<p class="price">
-200 Test Pi
-</p>
-
-<a href="nft.html" class="details">
-View Details
-</a>
-
-<button class="buy">
-Buy with Pi
-</button>
-
+<p class="price"> 200 Test Pi </p>
+<a href="nft.html" class="details"> View Details </a>
+<button class="buy" data-price="200" data-name="Satoshi Dark Angel Wings +30" data-id="darkangel-30"> Buy with Pi </button>
 </div>
 
 <div class="card">
-
-<img src="images/nft/rw3-bike.png"
-alt="Satoshi Astral Bike RW3">
-
+<img src="images/nft/rw3-bike.png" alt="Satoshi Astral Bike RW3">
 <h3>Satoshi Astral Bike RW3</h3>
-
 <p>Collection: RW3 Mounts</p>
-
-<p class="price">
-300 Test Pi
-</p>
-
-<a href="nft.html" class="details">
-View Details
-</a>
-
-<button class="buy">
-Buy with Pi
-</button>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-© 2026 Robert NFT Marketplace. All Rights Reserved.
-</p>
-
-</footer>
-
-<script src="js/marketplace.js"></script>
-
-</body>
-</html>
+<p class="price"> 300 Test Pi </p>
+<a href="nft.html" class="details"> View Details </a>
+<button class="buy" data-price="300" data-name="
